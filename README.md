@@ -1,1 +1,0 @@
-# Guardian Angel Safety App

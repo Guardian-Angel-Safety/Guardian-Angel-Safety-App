@@ -1,4 +1,4 @@
-package edu.floridapoly.guardianangelsafetyapp;
+package com.example.guardianangelsafetyapp;
 
 import org.junit.Test;
 

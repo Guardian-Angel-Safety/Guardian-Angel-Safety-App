@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Guardian Angel Safety App</string>
-
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="guardian_angel_safety">Guardian Angel Safety</string>
+    <string name="data">Data</string>
+    <string name="contacts">Contacts</string>
 </resources>

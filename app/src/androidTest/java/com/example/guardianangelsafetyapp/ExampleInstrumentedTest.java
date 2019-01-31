@@ -1,4 +1,4 @@
-package edu.floridapoly.guardianangelsafetyapp;
+package com.example.guardianangelsafetyapp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("edu.floridapoly.guardianangelsafetyapp", appContext.getPackageName());
+        assertEquals("com.example.guardianangelsafetyapp", appContext.getPackageName());
     }
 }

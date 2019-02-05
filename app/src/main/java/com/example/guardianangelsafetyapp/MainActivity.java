@@ -12,14 +12,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final Button DataButton = findViewById(R.id.DataButton);
+        final Button ContactsButton = findViewById(R.id.ContactsButton);
+
+        DataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, DataActivity.class));
+            }
+        });
+
+        ContactsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ContactsActivity.class));
+            }
+        });
     }
-
-    Button DataButton = (Button)findViewById(R.id.open_activity_button);
-
-    DataButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            startActivity(new Intent(MainActivity.this, DataActivity.class));
-        }
-    });
 }

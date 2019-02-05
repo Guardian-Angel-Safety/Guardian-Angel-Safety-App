@@ -7,13 +7,13 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/SensorText"
+        android:id="@+id/contactsText"
         android:layout_width="224dp"
         android:layout_height="36dp"
         android:layout_marginStart="93dp"
         android:layout_marginTop="51dp"
         android:layout_marginEnd="94dp"
-        android:text="@string/sensor_feed"
+        android:text="@string/contacts"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold"

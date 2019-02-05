@@ -2,5 +2,7 @@
     <string name="app_name">Guardian Angel Safety App</string>
     <string name="guardian_angel_safety">Guardian Angel Safety</string>
     <string name="data">Data</string>
+    <string name="sensor_feed">Sensor Feed</string>
     <string name="contacts">Contacts</string>
+    <string name="contactsButton">Contacts</string>
 </resources>

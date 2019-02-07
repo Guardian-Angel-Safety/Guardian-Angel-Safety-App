@@ -5,4 +5,5 @@
     <string name="sensor_feed">Sensor Feed</string>
     <string name="contacts">Contacts</string>
     <string name="contactsButton">Contacts</string>
+    <string name="refresh">Refresh</string>
 </resources>

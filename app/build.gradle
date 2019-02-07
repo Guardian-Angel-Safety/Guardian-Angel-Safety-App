@@ -26,6 +26,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //implementation ('org.achartengine:achartengine:1.2.0') {exclude module: 'org.achartengine.chart.CombinedXYChart'}
     //implementation 'com.android.support.constraint:constraint-layout:1.0.0-alpha2'
-    implementation (files('libs/achartengine-1.2.0.jar'))
+    //implementation (files('libs/achartengine-1.2.0.jar'))
+    implementation 'com.jjoe64:graphview:4.2.2'
     testImplementation 'junit:junit:4.12'
 }

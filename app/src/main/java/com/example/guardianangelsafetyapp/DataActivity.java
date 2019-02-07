@@ -2,6 +2,7 @@ package com.example.guardianangelsafetyapp;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
 
@@ -28,6 +29,8 @@ public class DataActivity extends Activity {
                 DrawGraph();
             }
         });
+
+        ViewPager pager = (ViewPager) findViewById(R.id.viewpager);
 
     }
 

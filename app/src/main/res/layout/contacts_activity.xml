@@ -11,7 +11,7 @@
         android:layout_width="224dp"
         android:layout_height="36dp"
         android:layout_marginStart="93dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="94dp"
         android:text="@string/contacts"
         android:textAlignment="center"
@@ -21,4 +21,5 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

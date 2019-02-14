@@ -2,6 +2,7 @@ package com.example.guardianangelsafetyapp;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
 
@@ -19,23 +20,23 @@ public class DataActivity extends Activity {
         setContentView(R.layout.data_activity);
 
         final Button refresh = findViewById(R.id.refresh);
-        final GraphView graph = DrawGraph();
+        final GraphView graph1 = DrawGraph("Temperature", 70, 90, R.id.graph1);
+        final GraphView graph2 = DrawGraph("Pressure", 0, 80, R.id.graph2);
 
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RefreshGraph(graph);
-                DrawGraph();
+                RefreshGraph(graph1);
+                RefreshGraph(graph2);
+                DrawGraph("Temperature", 70, 90, R.id.graph1);
+                DrawGraph("Pressure", 0, 80, R.id.graph2);
             }
         });
-
     }
 
-    protected GraphView DrawGraph(){
-        GraphView graph = (GraphView) findViewById(R.id.graph);
+    protected GraphView DrawGraph(String title, int from, int to, int id){
+        GraphView graph = (GraphView) findViewById(id);
         Random r = new Random();
-        int from = 75;
-        int to = 90;
         ArrayList<DataPoint> points = new ArrayList();
         //Bluetooth code will go here:
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
@@ -46,6 +47,7 @@ public class DataActivity extends Activity {
                 new DataPoint(4, from + r.nextInt(to - from + 1)),
         });
         graph.addSeries(series);
+        graph.setTitle(title);
         return graph;
     }
 

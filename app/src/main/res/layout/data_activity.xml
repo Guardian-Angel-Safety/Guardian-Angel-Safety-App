@@ -9,40 +9,49 @@
     <TextView
         android:id="@+id/SensorText"
         android:layout_width="224dp"
-        android:layout_height="36dp"
+        android:layout_height="39dp"
         android:layout_marginStart="93dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="94dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/sensor_feed"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/graph1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <com.jjoe64.graphview.GraphView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="100dp"
-        android:id="@+id/graph"
-        android:orientation="vertical"/>
 
     <Button
         android:id="@+id/refresh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
-        android:layout_marginTop="14dp"
         android:layout_marginEnd="161dp"
         android:layout_marginBottom="38dp"
         android:text="@string/refresh"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/graph"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="350dp"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="330dp"
+        android:layout_marginBottom="100dp"
+        tools:layout_editor_absoluteY="380dp"
+        />
+
 </android.support.constraint.ConstraintLayout>

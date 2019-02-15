@@ -6,4 +6,28 @@
     <string name="contacts">Contacts</string>
     <string name="contactsButton">Contacts</string>
     <string name="refresh">Refresh</string>
+    <string name="btnDelete">Delete</string>
+    <string name="btnAdd">Add</string>
+    <string name="btnEdit">Edit</string>
+    <string name="contactName">Contact Name</string>
+
+    <!-- AddEdit -->
+    <string name="name">Name</string>
+    <string name="pills_left">Pills Left</string>
+    <string name="dosage"># Per Dose </string>
+    <string name="days">Days</string>
+    <string name="Time">Time</string>
+    <string name="sunday">U</string>
+    <string name="monday">M</string>
+    <string name="tuesday">T</string>
+    <string name="wednesday">W</string>
+    <string name="thursday">R</string>
+    <string name="friday">F</string>
+    <string name="saturday">S</string>
+    <string name="btn_add">Add Medicine</string>
+    <string name="btn_edit">Update Medicine</string>
+    <string name="btn_delete">Delete Medicine</string>
+    <string name="menu_add">Add</string>
+
+    <string name="view">View</string>
 </resources>

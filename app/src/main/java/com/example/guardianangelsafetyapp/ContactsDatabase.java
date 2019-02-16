@@ -82,7 +82,12 @@ public class ContactsDatabase extends SQLiteOpenHelper {
       return contactList;
   }
 
-  public void addContact(ContactEntry entry) {
+  public void addContact(ContactEntry entry) throws Exception {
+      if(entry == null || entry.getId() == -1 || entry.getName().isEmpty())
+      {
+          throw new Exception("Fail!");
+      }
+      
       SQLiteDatabase db = this.getWritableDatabase();
 
       ContentValues values = new ContentValues();

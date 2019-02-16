@@ -52,6 +52,20 @@ public class ContactsActivity extends AppCompatActivity {
         populateContactList();
     }
 
+    private void createBogusContacts() {
+        ContactsDatabase db = ContactsDatabase.getInstance();
+        try 
+        {
+            ContactEntry entry = new ContactEntry();
+            db.addContact(null); //If contact entry is null, throw exception
+            db.addContact(new ContactEntry()); //Contact entry is not null, but malformed
+            db.addContact(new ContactEntry(0, null)); //Contact entry has proper id, but no name
+            Toast.makeText(getApplicationContext(), "Tests failed!", Toast.LENGTH_SHORT).show();
+        } catch (Exception ex) {
+            Toast.makeText(getApplicationContext(),"Tests successful", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private void populateContactList() {
 
         expandableListDetail = getData();

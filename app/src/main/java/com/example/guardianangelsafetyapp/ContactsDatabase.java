@@ -78,11 +78,52 @@ public class ContactsDatabase extends SQLiteOpenHelper {
       }
       cursor.close();
       db.close();
+
+      return contactList;
+  }
+
+  public void addContact(ContactEntry entry) {
+      SQLiteDatabase db = this.getWritableDatabase();
+
+      ContentValues values = new ContentValues();
+
+      values.put(KEY_NAME, entry.getName());
+      db.insert(TABLE_NAME, null, values);
+      db.close();
   }
 
   public ContactEntry getContactById(int id) {
       SQLiteDatabase db = this.getReadableDatabase();
-      
+      String queryStm = "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_ID + " = " + id;
+      Cursor cursor = db.rawQuery(queryStm, null);
+
+      ContactEntry entry = new ContactEntry();
+
+      if(cursor.moveToFirst()) {
+          String name = cursor.getString(cursor.getColumnIndex(KEY_NAME));
+          entry = new ContactEntry(name);
+      }
+      cursor.close();
+      db.close();
+      return entry;
+  }
+
+  public void updateContact(ContactEntry entry) {
+      SQLiteDatabase db = this.getWritableDatabase();
+
+      ContentValues values = new ContentValues();
+      values.put(KEY_NAME, entry.getName());
+
+      String[] args = new String[]{String.format("%d", entry.getId())};
+      db.update(TABLE_NAME, values, String.format("%s=?", KEY_ID), args);
+      db.close();
+  }
+
+  public void deleteContact(int id) {
+      SQLiteDatabase db = this.getWritableDatabase();
+
+      String[] args = new String[]{ String.format("%d", id)};
+      db.delete(TABLE_NAME, String.format("%s=?", KEY_ID), args);
       db.close();
   }
 

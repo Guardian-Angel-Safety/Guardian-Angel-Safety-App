@@ -13,20 +13,13 @@
 
     <!-- AddEdit -->
     <string name="name">Name</string>
-    <string name="pills_left">Pills Left</string>
-    <string name="dosage"># Per Dose </string>
-    <string name="days">Days</string>
-    <string name="Time">Time</string>
-    <string name="sunday">U</string>
-    <string name="monday">M</string>
-    <string name="tuesday">T</string>
-    <string name="wednesday">W</string>
-    <string name="thursday">R</string>
-    <string name="friday">F</string>
-    <string name="saturday">S</string>
-    <string name="btn_add">Add Medicine</string>
-    <string name="btn_edit">Update Medicine</string>
-    <string name="btn_delete">Delete Medicine</string>
+    <!--
+    <string name="pills_left">First Emergency Number</string>
+    <string name="dosage">Backup Emergency Number</string>
+    -->
+    <string name="btn_add">Add Contact</string>
+    <string name="btn_edit">Update Contact</string>
+    <string name="btn_delete">Delete Contact</string>
     <string name="menu_add">Add</string>
 
     <string name="view">View</string>

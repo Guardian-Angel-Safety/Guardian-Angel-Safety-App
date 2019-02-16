@@ -2,21 +2,21 @@ package com.example.guardianangelsafetyapp;
 
 import android.app.Activity;
 import android.os.Bundle;
-
 import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
-
 import android.view.Menu;
 import android.view.MenuItem;
-
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import android.content.Intent;
 
 import java.util.List;
 import java.util.HashMap;
 
 import java.lang.Exception;
+
+import java.util.ArrayList;
 
 public class ContactsActivity extends AppCompatActivity {
 
@@ -25,6 +25,8 @@ public class ContactsActivity extends AppCompatActivity {
     private CustomListAdapter contactsListAdapter; //Custom list adapter for displaying our contacts
     private List<String> expandableListHeader;
     private HashMap<String, List<String>> expandableListDetail;
+
+    public static HashMap<String, String> contactsDictionary;
 
 
     @Override
@@ -46,16 +48,52 @@ public class ContactsActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-
+        super.onResume();
+        populateContactList();
     }
 
     private void populateContactList() {
+
+        expandableListDetail = getData();
+        expandableListHeader = new ArrayList<String>(expandableListDetail.keySet());
         //Create a new list adapter to store and parse contact data
         contactsListAdapter = new CustomListAdapter(
-            getApplicationContext(),
+            this,
             expandableListHeader,
             expandableListDetail
         );
+
+        expandableListView.setAdapter(contactsListAdapter);
+    }
+
+    public HashMap<String, List<String>> getData() {
+        HashMap<String, List<String>> listItems = new HashMap<>();
+        List<ContactEntry> contactsList = ContactsDatabase.getInstance().getContacts(); 
+        List<String> bodyText;
+
+        contactsDictionary = new HashMap<>();
+
+        for(ContactEntry ent : contactsList) {
+            bodyText = new ArrayList<>();
+            bodyText.add(String.format("Name: %s", ent.getName()));
+            listItems.put(ent.getName(), bodyText);
+            contactsDictionary.put(ent.getName(), String.format("%d", ent.getId()));
+        }
+
+        return listItems;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if(id == R.id.menu_add) {
+            Intent intent = new Intent(ContactsActivity.this, AddEditActivity.class);
+            intent.putExtra("id", contactsDictionary.size() + 1);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

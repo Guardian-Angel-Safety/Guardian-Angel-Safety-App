@@ -80,7 +80,9 @@ public class CustomListAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, AddEditActivity.class);
+                int id = Integer.parseInt(ContactsActivity.contactsDictionary.get(listTitle));
                 intent.putExtra("isEdit", true);
+                intent.putExtra("id", id);
                 context.startActivity(intent);
             }
         });

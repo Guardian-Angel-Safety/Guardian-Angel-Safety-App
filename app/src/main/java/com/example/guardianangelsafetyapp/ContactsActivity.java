@@ -99,7 +99,6 @@ public class ContactsActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        Toast.makeText(getApplicationContext(), "Hello menu world!", Toast.LENGTH_LONG).show();
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }

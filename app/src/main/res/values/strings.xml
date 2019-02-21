@@ -6,4 +6,21 @@
     <string name="contacts">Contacts</string>
     <string name="contactsButton">Contacts</string>
     <string name="refresh">Refresh</string>
+    <string name="btnDelete">Delete</string>
+    <string name="btnAdd">Add</string>
+    <string name="btnEdit">Edit</string>
+    <string name="contactName">Contact Name</string>
+
+    <!-- AddEdit -->
+    <string name="name">Name</string>
+    <!--
+    <string name="pills_left">First Emergency Number</string>
+    <string name="dosage">Backup Emergency Number</string>
+    -->
+    <string name="btn_add">Add Contact</string>
+    <string name="btn_edit">Update Contact</string>
+    <string name="btn_delete">Delete Contact</string>
+    <string name="menu_add">Add</string>
+
+    <string name="view">View</string>
 </resources>

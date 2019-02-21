@@ -8,26 +8,26 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
 
-        final Button DataButton = findViewById(R.id.DataButton);
-        final Button ContactsButton = findViewById(R.id.ContactsButton);
+    final Button DataButton = findViewById(R.id.DataButton);
+    final Button ContactsButton = findViewById(R.id.ContactsButton);
 
-        DataButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, DataActivity.class));
-            }
-        });
+    DataButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startActivity(new Intent(MainActivity.this, DataActivity.class));
+      }
+    });
 
-        ContactsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ContactsActivity.class));
-            }
-        });
-    }
+    ContactsButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startActivity(new Intent(MainActivity.this, ContactsActivity.class));
+      }
+    });
+  }
 }

@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     final Button DataButton = findViewById(R.id.DataButton);
     final Button ContactsButton = findViewById(R.id.ContactsButton);
+    final Button TimerButton = findViewById(R.id.TimerButton);
 
     DataButton.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -27,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
       @Override
       public void onClick(View v) {
         startActivity(new Intent(MainActivity.this, ContactsActivity.class));
+      }
+    });
+
+    TimerButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startActivity(new Intent(MainActivity.this, TimerActivity.class));
       }
     });
   }

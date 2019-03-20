@@ -25,6 +25,9 @@
         <activity android:name=".AddEditActivity">
         
         </activity>
-    </application>
 
+        <activity android:name=".TimerActivity">
+
+        </activity>
+    </application>
 </manifest>

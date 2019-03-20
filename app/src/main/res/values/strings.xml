@@ -23,4 +23,10 @@
     <string name="menu_add">Add</string>
 
     <string name="view">View</string>
+    <string name="timer">Timer</string>
+    <string name="timerText">timerText</string>
+    <string name="timerButton">timerButton</string>
+    <string name="start">Start</string>
+    <string name="_00_00">00:00</string>
+    <string name="_2_00">2:00</string>
 </resources>

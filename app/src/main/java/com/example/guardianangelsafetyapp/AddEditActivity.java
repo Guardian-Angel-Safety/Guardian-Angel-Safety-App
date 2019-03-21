@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 public class AddEditActivity extends AppCompatActivity {
 
     private EditText nameET;
+    private EditText numberET;
     private Button btnDelete;
     private Button btnAddEdit;
 
@@ -31,6 +32,7 @@ public class AddEditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_addedit);
 
         nameET = (EditText) findViewById(R.id.nameET);
+        numberET = (EditText) findViewById(R.id.numberET);
         btnDelete = (Button) findViewById(R.id.btnDelete);
         btnAddEdit = (Button) findViewById(R.id.btnAddEditContact);
 
@@ -52,6 +54,7 @@ public class AddEditActivity extends AppCompatActivity {
     private void loadContactInfo() {
         ContactEntry entry = ContactsDatabase.getInstance().getContactById(contactId);
         nameET.setText(entry.getName());
+        numberET.setText(entry.getNumber());
         
     }
 
@@ -77,12 +80,13 @@ public class AddEditActivity extends AppCompatActivity {
     public void btnAddEditClick(View view) {
         try {
             String name = nameET.getText().toString();
+            String number = numberET.getText().toString();
 
             if(!isEdit) {
-                ContactEntry entry = new ContactEntry(contactId, name);
+                ContactEntry entry = new ContactEntry(contactId, name, number);
                 ContactsDatabase.getInstance().addContact(entry);
             } else {
-                ContactEntry entry = new ContactEntry(contactId, name);
+                ContactEntry entry = new ContactEntry(contactId, name, number);
                 ContactsDatabase.getInstance().updateContact(entry);
             }
             finish();

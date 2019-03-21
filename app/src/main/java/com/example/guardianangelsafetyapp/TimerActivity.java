@@ -4,21 +4,26 @@ import android.app.Activity;
 import android.app.Service;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TimerActivity extends Activity {
 
     //Declare textbox scope where time left is printed
     TextView timerText;
-    long timeLeft = 120000; //change this if you need the time to be shorter (it will still say "2:00" unless you change the textview text
+    long timeLeft = 5000; //change this if you need the time to be shorter (it will still say "2:00" unless you change the textview text
     //120000 milliseconds = 2 minutes
 
     //create countdown object to run from timeLeft and descending by 1000 millis every tick
     CountDown timer = new CountDown(timeLeft, 1000);
 
     //custom implementation of CountDownTimer to start from variable time
+
     public class CountDown extends CountDownTimer{
 
         //start timer from timeLeft
@@ -38,10 +43,25 @@ public class TimerActivity extends Activity {
 
         @Override
         public void onFinish() {
-            Button timerButton = (Button)findViewById(R.id.timerButton);
+            Button timerButton = (Button) findViewById(R.id.timerButton);
             timerButton.setText("Start"); //change button text from "Stop" to "Start"
-            timerText.setText("2:00"); //reset timer text
-            timeLeft = 120000;  //reset timeLeft when timer finishes
+            timerText.setText("0:30"); //reset timer text
+            timeLeft = 5000;  //reset timeLeft when timer finishes
+
+            //Automatic SMS
+            /*
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage("9043038515", null, "This is an automated message from the Guardian Angel Service. The owner has left a child/pet in their vehicle." +
+                    "\nPlease attempt to contact the owner. If no contact can be made, Please contact Emergency Services.", null, null);
+            */
+            List<Integer> listIds = ContactsActivity.getIDs();
+
+            for (int i = 0; i < listIds.size(); i++) {
+                /*smsManager.sendTextMessage(listIds.get(i).toString(), null, "This is an automated message from the Guardian Angel Service. The owner has left a child/pet in their vehicle." +
+                        "\nPlease attempt to contact the owner. If no contact can be made, Please contact Emergency Services.", null, null);
+                        */
+                System.out.print(listIds.get(i));
+            }
         }
     }
 

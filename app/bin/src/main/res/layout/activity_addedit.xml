@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context="nation.procrastination.medicineapp.AddEditActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/rounded_rect_back">
+
+        <EditText
+            android:id="@+id/nameET"
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/amountET"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/amountET"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="@string/name"
+            android:inputType="textPersonName" />
+
+        <!--
+
+        <EditText
+            android:id="@+id/dosageET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/amountET"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:ems="10"
+            android:hint="@string/dosage"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/amountET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/nameET"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:ems="10"
+            android:hint="@string/pills_left"
+            android:inputType="number" />
+        -->
+
+        <Button
+            android:id="@+id/btnAddEditContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nameET"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="11dp"
+            android:onClick="btnAddEditClick"
+            android:text="@string/btn_add" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/btnAddEditContact"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/btn_delete"
+            android:onClick="btnDeleteContact"
+            android:text="@string/btn_delete" />
+    </RelativeLayout>
+
+</RelativeLayout>

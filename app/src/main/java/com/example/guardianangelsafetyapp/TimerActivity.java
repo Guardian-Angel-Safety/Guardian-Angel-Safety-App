@@ -1,5 +1,7 @@
 package com.example.guardianangelsafetyapp;
 
+import java.util.Calendar;
+
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -46,7 +48,9 @@ public class TimerActivity extends Activity {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
                 this.getApplicationContext(), 0, intent, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (i*1000), pendingIntent);
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.SECOND, 5);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (5000), pendingIntent);
         Toast.makeText(this, "Timer set", Toast.LENGTH_LONG).show();
     }
 

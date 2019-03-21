@@ -6,29 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/timerText"
-        android:layout_width="195dp"
-        android:layout_height="102dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="135dp"
-        android:layout_marginEnd="108dp"
-        android:text="@string/_2_00"
-        android:textAlignment="center"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/timerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
-        android:layout_marginTop="122dp"
+        android:layout_marginTop="359dp"
         android:layout_marginEnd="162dp"
-        android:text="@string/start"
+        android:layout_marginBottom="324dp"
+        android:text="@string/disconnect_bluetooth"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timerText" />
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

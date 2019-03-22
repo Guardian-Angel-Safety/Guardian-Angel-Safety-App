@@ -17,9 +17,7 @@
             android:id="@+id/nameET"
             android:layout_width="500dp"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/amountET"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/amountET"
             android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="@string/name"
@@ -54,13 +52,23 @@
             android:inputType="number" />
         -->
 
+        <EditText
+            android:id="@+id/numberET"
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="74dp"
+            android:ems="10"
+            android:hint="@string/number"
+            android:inputType="phone" />
+
         <Button
             android:id="@+id/btnAddEditContact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/nameET"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="112dp"
             android:onClick="btnAddEditClick"
             android:text="@string/btn_add" />
 

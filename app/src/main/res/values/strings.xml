@@ -13,6 +13,7 @@
 
     <!-- AddEdit -->
     <string name="name">Name</string>
+    <string name="number">Number</string>
     <!--
     <string name="pills_left">First Emergency Number</string>
     <string name="dosage">Backup Emergency Number</string>

@@ -55,7 +55,6 @@ public class AddEditActivity extends AppCompatActivity {
         ContactEntry entry = ContactsDatabase.getInstance().getContactById(contactId);
         nameET.setText(entry.getName());
         numberET.setText(entry.getNumber());
-        
     }
 
     public void btnDeleteContact(View view) {

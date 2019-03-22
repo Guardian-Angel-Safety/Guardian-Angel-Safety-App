@@ -41,9 +41,12 @@ public class ContactsDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTbl = "CREATE TABLE " + TABLE_NAME + " (" + KEY_ID + " INTEGER PRIMARY KEY, "
-                + KEY_NAME + " TEXT, "
-                + KEY_NUMBER + " TEXT)";
+        String createTbl = "CREATE TABLE " + TABLE_NAME +
+                "(" +
+                KEY_ID + " INTEGER PRIMARY KEY," +
+                KEY_NAME + " TEXT," +
+                KEY_NUMBER + " TEXT" +
+                ")";
         db.execSQL(createTbl);
     }
 

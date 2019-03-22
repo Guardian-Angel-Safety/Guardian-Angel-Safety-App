@@ -52,8 +52,8 @@ public class AlarmReceiver extends BroadcastReceiver {
                 .setContentInfo("Info");
     
         notificationManager.notify(1, notificationBuilder.build());
-        //SmsManager sms = SmsManager.getDefault();
+        SmsManager sms = SmsManager.getDefault();
         //commented to save message line
-        //sms.sendTextMessage("9043038515", null, "This is an automated safety alert from the Guardian Angel Safety system. The owner has left a child or pet in their vehicle unattended for 2 minutes. Please check on the vehicle.", null, null);
+        sms.sendTextMessage("7277425492", null, "Alert!", null, null);
     }
 }

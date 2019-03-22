@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.content.Intent;
 
+import java.lang.reflect.Array;
 import java.util.List;
 import java.util.HashMap;
 
@@ -59,7 +60,7 @@ public class ContactsActivity extends AppCompatActivity {
             ContactEntry entry = new ContactEntry();
             db.addContact(null); //If contact entry is null, throw exception
             db.addContact(new ContactEntry()); //Contact entry is not null, but malformed
-            db.addContact(new ContactEntry(0, null)); //Contact entry has proper id, but no name
+            db.addContact(new ContactEntry(0, null, null)); //Contact entry has proper id, but no name
             Toast.makeText(getApplicationContext(), "Tests failed!", Toast.LENGTH_SHORT).show();
         } catch (Exception ex) {
             Toast.makeText(getApplicationContext(),"Tests successful", Toast.LENGTH_SHORT).show();
@@ -95,6 +96,16 @@ public class ContactsActivity extends AppCompatActivity {
         }
 
         return listItems;
+    }
+
+    public static List<Integer> getIDs() {
+        List<ContactEntry> contactsList = ContactsDatabase.getInstance().getContacts();
+        List<Integer> returnList = new ArrayList<>();
+
+        for(ContactEntry ent : contactsList) {
+            returnList.add(ent.getId());
+        }
+        return returnList;
     }
 
     @Override

@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Guardian Angel Safety App</string>
+    <string name="guardian_angel_safety">Guardian Angel Safety</string>
+    <string name="data">Data</string>
+    <string name="sensor_feed">Sensor Feed</string>
+    <string name="contacts">Contacts</string>
+    <string name="contactsButton">Contacts</string>
+    <string name="refresh">Refresh</string>
+    <string name="btnDelete">Delete</string>
+    <string name="btnAdd">Add</string>
+    <string name="btnEdit">Edit</string>
+    <string name="contactName">Contact Name</string>
+
+    <!-- AddEdit -->
+    <string name="name">Name</string>
+    <!--
+    <string name="pills_left">First Emergency Number</string>
+    <string name="dosage">Backup Emergency Number</string>
+    -->
+    <string name="btn_add">Add Contact</string>
+    <string name="btn_edit">Update Contact</string>
+    <string name="btn_delete">Delete Contact</string>
+    <string name="menu_add">Add</string>
+
+    <string name="notifmsg">The Guardian Angel Safety device has detected a child left in the car. Your emergency contacts have been notified.</string>
+    <string name="notiftitle">Guardian Angel Safety Alert</string>
+
+    <string name="view">View</string>
+    <string name="timer">Timer</string>
+    <string name="timerText">timerText</string>
+    <string name="timerButton">timerButton</string>
+    <string name="start">Start</string>
+    <string name="_00_00">00:00</string>
+    <string name="_2_00">2:00</string>
+    <string name="disconnect_bluetooth">Disconnect Bluetooth</string>
+</resources>

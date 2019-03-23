@@ -125,7 +125,7 @@ public class ContactsDatabase extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, entry.getName());
-        values.put(KEY_NUMBER, entry.getName());
+        values.put(KEY_NUMBER, entry.getNumber());
 
         String[] args = new String[]{String.format("%d", entry.getId())};
         db.update(TABLE_NAME, values, String.format("%s=?", KEY_ID), args);

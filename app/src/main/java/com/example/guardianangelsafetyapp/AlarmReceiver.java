@@ -17,6 +17,8 @@ import android.telephony.SmsManager;
 import android.os.Build;
 import android.graphics.Color;
 
+import java.util.List;
+
 public class AlarmReceiver extends BroadcastReceiver {
 
     private static int MID;
@@ -54,6 +56,17 @@ public class AlarmReceiver extends BroadcastReceiver {
         notificationManager.notify(1, notificationBuilder.build());
         SmsManager sms = SmsManager.getDefault();
         //commented to save message line
-        sms.sendTextMessage("7277425492", null, "Alert!", null, null);
+
+        /*
+        List<String> listNumbers = ContactsActivity.getNumber();
+
+        for (int i = 0; i < listNumbers.size(); i++) {
+            sms.sendTextMessage(listNumbers.get(i), null, "This is an automated message from Guardian Angel. A child/pet was left in the vehicle." +
+                    "\nPlease contact the owner. If no contact can be made, contact Emergency Services.", null, null);
+
+            System.out.print(listNumbers.get(i));
+        }
+        */
+        //sms.sendTextMessage("7277425492", null, "Alert!", null, null);
     }
 }

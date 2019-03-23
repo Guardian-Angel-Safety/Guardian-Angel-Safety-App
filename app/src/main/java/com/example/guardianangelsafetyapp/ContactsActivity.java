@@ -98,12 +98,12 @@ public class ContactsActivity extends AppCompatActivity {
         return listItems;
     }
 
-    public static List<Integer> getIDs() {
+    public static List<String> getNumber() {
         List<ContactEntry> contactsList = ContactsDatabase.getInstance().getContacts();
-        List<Integer> returnList = new ArrayList<>();
+        List<String> returnList = new ArrayList<>();
 
         for(ContactEntry ent : contactsList) {
-            returnList.add(ent.getId());
+            returnList.add(ent.getNumber());
         }
         return returnList;
     }

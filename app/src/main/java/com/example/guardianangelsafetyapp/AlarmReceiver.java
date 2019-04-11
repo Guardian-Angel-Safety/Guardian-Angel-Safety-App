@@ -1,23 +1,15 @@
 package com.example.guardianangelsafetyapp;
 
-import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.v4.app.ActivityCompat;
-import android.widget.Toast;
 import android.app.Notification;
-import android.app.Notification.Builder;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.app.NotificationCompat;
 import android.telephony.SmsManager;
 import android.os.Build;
 import android.graphics.Color;
-
-import java.util.List;
 
 public class AlarmReceiver extends BroadcastReceiver {
 
@@ -30,7 +22,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         String NOTIFICATION_CHANNEL_ID = "guardian_angel_channel";
     
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "My Notifications", NotificationManager.IMPORTANCE_MAX);
+            NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "My Notifications", NotificationManager.IMPORTANCE_HIGH);
     
             // Configure the notification channel.
             notificationChannel.setDescription("GAS Channel");

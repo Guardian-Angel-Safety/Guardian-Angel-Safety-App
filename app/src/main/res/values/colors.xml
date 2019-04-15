@@ -6,4 +6,27 @@
     <color name="toggle_off">#d6d7d8</color>
     <color name="toggle_on">@color/colorAccent</color>
     <color name="times_bg">#edf2f6</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="neutral_bg_light">#F0F4F8</color>
+    <color name="neutral_bg">#D9E2EC</color>
+    <color name="neutral">#BCCCDC</color>
+    <color name="neutral_semidark">#9FB3C8</color>
+    <color name="neutral_dark">#829AB1</color>
+    <color name="neutral_darker">#486581</color>
+
+    <color name="blue_bg_light">#DCEEFB</color>
+    <color name="blue_bg_semilight">#B6E0FE</color>
+    <color name="blue_accent">#2680C2</color>
+    <color name="blue_accent_dark">#003E6B</color>
+    <color name="blue">#5E88FC</color>
+
+
+    <color name="mint_supporting">#8EEDD1</color>
+    <color name="teal_supporting">#0E7C86</color>
+
+    <color name="red_supporting">#D64545</color>
+    <color name="yellow_supporting">#F7D070</color>
+    <color name="green_supporting">#2DCCA7</color>
+
 </resources>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Guardian Angel Safety App</string>
+    <string name="app_name">Guardian Angel</string>
     <string name="guardian_angel_safety">Guardian Angel Safety</string>
     <string name="data">Data</string>
     <string name="sensor_feed">Sensor Feed</string>

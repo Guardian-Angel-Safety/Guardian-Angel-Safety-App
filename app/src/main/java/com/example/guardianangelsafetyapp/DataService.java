@@ -1,5 +1,6 @@
 package com.example.guardianangelsafetyapp;
 
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -13,13 +14,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
+import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 
 public class DataService extends Service {
-    String link = "https://google.com";
-    URL url = new URL(link);
+    private String link = "https://api.duckduckgo.com/?q=Search&format=json&atb=v1-1";
+    private URL url = new URL(link);
 
     public DataService() throws MalformedURLException {
     }
@@ -41,6 +43,8 @@ public class DataService extends Service {
             pushData();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -49,7 +53,7 @@ public class DataService extends Service {
         super.onDestroy();
     }
 
-    public void pushData() throws IOException {
+    public void pushData() throws IOException, InterruptedException {
         while(true) {
             HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
             try {
@@ -58,6 +62,7 @@ public class DataService extends Service {
             } finally {
                 urlConnection.disconnect();
             }
+            TimeUnit.SECONDS.sleep(60);
         }
     }
 
@@ -68,6 +73,7 @@ public class DataService extends Service {
             sb.append(line);
         }
         is.close();
+        System.out.println(sb);
         return sb.toString();
     }
 }

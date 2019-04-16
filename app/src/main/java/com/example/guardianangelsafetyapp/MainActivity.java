@@ -1,5 +1,6 @@
 package com.example.guardianangelsafetyapp;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Build;

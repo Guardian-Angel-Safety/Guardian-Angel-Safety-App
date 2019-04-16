@@ -34,6 +34,8 @@
         </activity>
         <service android:name=".NotifService" android:enabled="true"/>
         <receiver android:name=".AlarmReceiver" />
+        <service android:name=".DataService" android:enabled="true"/>
+        <receiver android:name=".DataReceiver" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

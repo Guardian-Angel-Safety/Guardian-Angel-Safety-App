@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#2680C2</color>
+    <color name="colorPrimaryDark">#003E6B</color>
+    <color name="colorAccent">#0E7C86</color>
     <color name="toggle_off">#d6d7d8</color>
     <color name="toggle_on">@color/colorAccent</color>
     <color name="times_bg">#edf2f6</color>
@@ -14,6 +14,7 @@
     <color name="neutral_semidark">#9FB3C8</color>
     <color name="neutral_dark">#829AB1</color>
     <color name="neutral_darker">#486581</color>
+    <color name="neutral_darkest">#303D49</color>
 
     <color name="blue_bg_light">#DCEEFB</color>
     <color name="blue_bg_semilight">#B6E0FE</color>

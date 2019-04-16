@@ -19,13 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DataActivity">
+        <activity android:name=".DataActivity" android:theme="@style/AppTheme" android:label="Sensor Data">
 
         </activity>
-        <activity android:name=".ContactsActivity">
+        <activity android:name=".ContactsActivity" android:label="Contacts">
 
         </activity>
-        <activity android:name=".AddEditActivity">
+        <activity android:name=".AddEditActivity" android:label="Edit Contact" android:theme="@style/AppTheme.NoActionBar">
         
         </activity>
 

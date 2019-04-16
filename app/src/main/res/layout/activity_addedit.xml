@@ -4,24 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
+    android:background="@drawable/gradient"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
     tools:context="nation.procrastination.medicineapp.AddEditActivity">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_margin="5dp"
-        android:background="@drawable/rounded_rect_back">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="250dp"
+        android:background="@drawable/roundedcard"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
 
         <EditText
             android:id="@+id/nameET"
-            android:layout_width="500dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="@string/name"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="@color/neutral_darkest"
+            android:textColorLink="@color/blue_accent_dark" />
 
         <!--
 
@@ -54,33 +64,46 @@
 
         <EditText
             android:id="@+id/numberET"
-            android:layout_width="500dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginTop="74dp"
             android:ems="10"
             android:hint="@string/number"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:textColor="@color/neutral_darkest"
+            android:textColorLink="@color/blue_accent_dark" />
 
         <Button
             android:id="@+id/btnAddEditContact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/nameET"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="112dp"
+            android:layout_width="125dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/numberET"
+            android:layout_alignEnd="@+id/numberET"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/btn_rounded_dark"
             android:onClick="btnAddEditClick"
-            android:text="@string/btn_add" />
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/btn_add"
+            android:textColor="@color/neutral_bg_light"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btnDelete"
-            android:layout_width="140dp"
-            android:layout_height="40dp"
-            android:layout_below="@id/btnAddEditContact"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/btn_delete"
+            android:layout_width="125dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/numberET"
+            android:layout_alignStart="@+id/numberET"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_outline"
             android:onClick="btnDeleteContact"
-            android:text="@string/btn_delete" />
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/btn_delete"
+            android:textSize="12sp" />
     </RelativeLayout>
 
 </RelativeLayout>

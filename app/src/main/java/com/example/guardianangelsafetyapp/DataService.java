@@ -3,6 +3,7 @@ package com.example.guardianangelsafetyapp;
 import android.app.IntentService;
 import android.content.Intent;
 import android.os.IBinder;
+import android.os.Messenger;
 import android.os.health.SystemHealthManager;
 import android.widget.Toast;
 
@@ -13,12 +14,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HttpsURLConnection;
 
 public class DataService extends IntentService {
-    private String link = "https://gas-device.appspot.com/docs/#!/default/rootGET";
+    private String link = "https://gas-device.appspot.com/";
     private URL url = new URL(link);
 
     public DataService() throws MalformedURLException {
@@ -79,7 +83,10 @@ public class DataService extends IntentService {
             sb.append(line);
         }
         is.close();
-        System.out.println(sb);
-        return sb.toString();
+        String incoming = sb.toString();
+        List<String> responseList = new ArrayList<String>(Arrays.asList(incoming.split(",")));
+        String json = responseList.get(0);
+        System.out.println(json);
+        return json;
     }
 }

@@ -23,6 +23,9 @@
     <string name="btn_delete">Delete Contact</string>
     <string name="menu_add">Add</string>
 
+    <string name="btn_add2">ADD VEHICLE</string>
+    <string name="btn_edit2">UPDATE VEHICLE</string>
+
     <string name="notifmsg">The Guardian Angel Safety device has detected a child left in the car. Your emergency contacts have been notified.</string>
     <string name="notiftitle">Guardian Angel Safety Alert</string>
 

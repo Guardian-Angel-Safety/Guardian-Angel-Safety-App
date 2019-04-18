@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/roundedcard"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <EditText
+            android:id="@+id/v_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="phone"
+            android:textColor="@color/neutral_darkest"
+            android:textColorLink="@color/blue_accent_dark" />
+
+        <EditText
+            android:id="@+id/v_make"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:ems="10"
+            android:hint="Make"
+            android:inputType="phone"
+            android:textColor="@color/neutral_darkest"
+            android:textColorLink="@color/blue_accent_dark" />
+
+        <EditText
+            android:id="@+id/v_model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:ems="10"
+            android:hint="Model"
+            android:inputType="textPersonName"
+            android:textColor="@color/neutral_darkest"
+            android:textColorLink="@color/blue_accent_dark" />
+
+        <EditText
+            android:id="@+id/v_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:ems="10"
+            android:hint="Color"
+            android:inputType="textPersonName"
+            android:textColor="@color/neutral_darkest"
+            android:textColorLink="@color/blue_accent_dark" />
+
+        <EditText
+            android:id="@+id/v_tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:ems="10"
+            android:hint="Tag Number"
+            android:inputType="textPersonName"
+            android:textColor="@color/neutral_darkest"
+            android:textColorLink="@color/blue_accent_dark" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="125dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/button_outline"
+                android:onClick="btnDeleteContact"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="DELETE VEHICLE"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnAddEditContact"
+                android:layout_width="125dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/btn_rounded_dark"
+                android:onClick="btnAddEditClick"
+                android:text="@string/btn_add"
+                android:textColor="@color/neutral_bg_light"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

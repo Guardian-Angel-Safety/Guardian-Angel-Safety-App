@@ -84,9 +84,13 @@ public class DataService extends IntentService {
         }
         is.close();
         String incoming = sb.toString();
-        List<String> responseList = new ArrayList<String>(Arrays.asList(incoming.split(",")));
-        String json = responseList.get(0);
-        System.out.println(json);
-        return json;
+        try {
+            List<String> responseList = new ArrayList<String>(Arrays.asList(incoming.split(",")));
+            String json = responseList.get(0);
+            System.out.println(json);
+            return json;
+        } catch (Exception e) {
+            return incoming;
+        }
     }
 }

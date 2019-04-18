@@ -1,11 +1,7 @@
 package com.example.guardianangelsafetyapp;
 
-import android.app.PendingIntent;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Canvas;
-import android.os.Build;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,10 +10,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import org.json.JSONException;
+import org.json.JSONObject;
 
+public class MainActivity extends AppCompatActivity implements DataReceiver.Receiver {
+
+  String temperature;
+  String pressure;
   TextView temptext;
   ImageView ring;
+  DataReceiver mReceiver;
 
   ImageView pres_icon;
   ImageView bluetooth_icon;
@@ -26,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    Intent dataService = new Intent(this, DataService.class);
-    this.startService(dataService);
     setContentView(R.layout.activity_main);
+    Intent dataService = new Intent(this, DataService.class);
+    initService(dataService);
 
     temptext = findViewById(R.id.ui_temptext);
     ring = findViewById(R.id.ui_ring);
@@ -57,17 +59,32 @@ public class MainActivity extends AppCompatActivity {
     test.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        setUI(69, 20,30,false);
+        setUI(temperature, pressure,30,false);
       }
     });
 
-
   }
 
-  public void setTemp(float temp)
+  @Override
+  public void onReceiveResult(int resultCode, Bundle resultData) throws JSONException {
+    System.out.println(resultData);
+    JSONObject sensorData = new JSONObject(resultData.toString());
+    pressure = sensorData.get("pressure").toString();
+    temperature = sensorData.get("temperature").toString();
+  }
+
+  public void initService(Intent dataService) {
+    mReceiver = new DataReceiver(new Handler());
+    mReceiver.setReceiver(this);
+    dataService.putExtra("nameTag", "GAS");
+    dataService.putExtra("receiverTag", mReceiver);
+    startService(dataService);
+  }
+
+  public void setTemp(String temp)
   {
-    int newtemp = Math.round(temp);
-    temptext.setText(Integer.toString(newtemp));
+    temptext.setText(temp);
+    /*
     if (temp > 95f)
     {
       ring.getDrawable().setTint(getResources().getColor(R.color.red_supporting));
@@ -79,12 +96,14 @@ public class MainActivity extends AppCompatActivity {
     else {
       ring.getDrawable().setTint(getResources().getColor(R.color.green_supporting));
     }
+    */
     Log.d("myTag", "This is my message");
   }
 
-  public void setPres(float pres)
+  public void setPres(String pres)
   {
-    if (pres > 5f)
+    Float newPres = Float.parseFloat(pres);
+    if (newPres > 5f)
     {
       pres_icon.setImageResource(R.drawable.seatfull);
     }
@@ -122,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
     }
   }
 
-  public void setUI(float temp, float pres, float battery, boolean bluetooth)
+  public void setUI(String temp, String pres, float battery, boolean bluetooth)
   {
     setTemp(temp);
     setPres(pres);

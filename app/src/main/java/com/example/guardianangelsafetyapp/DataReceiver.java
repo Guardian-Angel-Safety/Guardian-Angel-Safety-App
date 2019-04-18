@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 
+import org.json.JSONException;
+
 public class DataReceiver extends ResultReceiver {
     private Receiver mReceiver;
 
@@ -12,7 +14,7 @@ public class DataReceiver extends ResultReceiver {
     }
 
     public interface Receiver {
-        public void onReceiveResult(int resultCode, Bundle resultData);
+        public void onReceiveResult(int resultCode, Bundle resultData) throws JSONException;
     }
 
     public void setReceiver(Receiver receiver) {
@@ -22,7 +24,11 @@ public class DataReceiver extends ResultReceiver {
     @Override
     protected void onReceiveResult(int resultCode, Bundle resultData) {
         if(mReceiver != null) {
-            mReceiver.onReceiveResult(resultCode, resultData);
+            try {
+                mReceiver.onReceiveResult(resultCode, resultData);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

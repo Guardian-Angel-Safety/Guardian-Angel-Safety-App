@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.ResultReceiver;
-
-import org.json.JSONObject;
+import android.provider.SyncStateContract;
+import android.util.Log;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -49,6 +49,7 @@ public class DataService extends IntentService {
     @Override
     public void onCreate(){
         System.out.println("Data service created!");
+
         super.onCreate();
     }
 
@@ -75,6 +76,7 @@ public class DataService extends IntentService {
                 urlConnection.disconnect();
             }
             ResultReceiver rec = intent.getParcelableExtra("receiverTag");
+            Log.d("GAS", "received");
             Bundle b = new Bundle();
             if(result != null) {
                 b.putString("json", result);
@@ -82,8 +84,7 @@ public class DataService extends IntentService {
                 TimeUnit.SECONDS.sleep(60);
             }
             else{
-                b.putString("Failed", "Failed");
-                rec.send(0, b);
+                System.out.println("Failed data pull");
             }
         }
     }
@@ -97,10 +98,10 @@ public class DataService extends IntentService {
         is.close();
         String incoming = sb.toString();
         try {
-            List<String> responseList = new ArrayList<String>(Arrays.asList(incoming.split(",")));
-            String json = responseList.get(0);
-            System.out.println(json);
-            return json;
+            //List<String> responseList = new ArrayList<String>(Arrays.asList(incoming.split(",")));
+            //String json = responseList.get(0);
+            //System.out.println(json);
+            return incoming;
         } catch (Exception e) {
             return incoming;
         }

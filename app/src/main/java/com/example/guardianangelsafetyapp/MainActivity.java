@@ -1,5 +1,8 @@
 package com.example.guardianangelsafetyapp;
 
+import android.app.PendingIntent;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Build;
@@ -23,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    Intent dataService = new Intent(this, DataService.class);
+    this.startService(dataService);
     setContentView(R.layout.activity_main);
 
     temptext = findViewById(R.id.ui_temptext);

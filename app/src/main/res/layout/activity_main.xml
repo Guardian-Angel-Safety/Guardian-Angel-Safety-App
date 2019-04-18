@@ -37,49 +37,47 @@
         </RelativeLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <com.example.guardianangelsafetyapp.TempRing
-        android:id="@+id/tempRing"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="108dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerInside"
-        app:circleColor="@color/green_supporting"
+    <ImageView
+        android:id="@+id/ui_ring"
+        android:layout_width="225dp"
+        android:layout_height="225dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/ui_ring"
+        app:layout_constraintBottom_toTopOf="@+id/ui_bluetooth"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/appbar_layout" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ui_bluetooth"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tempRing"
+        app:layout_constraintTop_toBottomOf="@+id/ui_ring"
         app:srcCompat="@drawable/bluetoothconnected" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/ui_pres"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/tempRing"
+        app:layout_constraintEnd_toStartOf="@+id/ui_bluetooth"
+        app:layout_constraintTop_toBottomOf="@+id/ui_ring"
         app:srcCompat="@drawable/seatempty" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/ui_battery"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/tempRing"
+        android:layout_marginTop="64dp"
+        app:layout_constraintStart_toEndOf="@+id/ui_bluetooth"
+        app:layout_constraintTop_toBottomOf="@+id/ui_ring"
         app:srcCompat="@drawable/batteryfull" />
 
     <Button
@@ -101,7 +99,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/ui_bluetooth" />
 
     <Button
         android:id="@+id/ContactsButton"
@@ -120,7 +118,7 @@
         android:textColor="@color/blue_accent"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/DataButton"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/ui_battery"
         tools:text="contacts" />
 
     <Button
@@ -140,7 +138,7 @@
         android:textColor="@color/blue_accent"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/DataButton"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/ui_pres" />
 
     <TextView
         android:id="@+id/textView2"
@@ -151,8 +149,8 @@
         android:fontFamily="sans-serif-medium"
         android:text="F"
         android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/textView" />
+        app:layout_constraintBottom_toBottomOf="@+id/ui_temptext"
+        app:layout_constraintStart_toEndOf="@+id/ui_temptext" />
 
     <TextView
         android:id="@+id/textView3"
@@ -163,21 +161,31 @@
         android:fontFamily="sans-serif-medium"
         android:text="°"
         android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/textView" />
+        app:layout_constraintBottom_toBottomOf="@+id/ui_temptext"
+        app:layout_constraintStart_toEndOf="@+id/ui_temptext" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/ui_temptext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
         android:fontFamily="sans-serif-black"
         android:text="70"
         android:textSize="85sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tempRing"
-        app:layout_constraintEnd_toEndOf="@+id/tempRing"
-        app:layout_constraintHorizontal_bias="0.435"
-        app:layout_constraintStart_toStartOf="@+id/tempRing"
-        app:layout_constraintTop_toTopOf="@+id/tempRing"
-        app:layout_constraintVertical_bias="0.497" />
+        app:layout_constraintBottom_toBottomOf="@+id/ui_ring"
+        app:layout_constraintEnd_toEndOf="@+id/ui_ring"
+        app:layout_constraintStart_toStartOf="@+id/ui_ring"
+        app:layout_constraintTop_toTopOf="@+id/ui_ring" />
+
+    <Button
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/appbar_layout"
+        app:layout_constraintTop_toBottomOf="@+id/appbar_layout" />
 
 </android.support.constraint.ConstraintLayout>

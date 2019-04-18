@@ -39,6 +39,11 @@ public class TempRing extends View {
         init();
     }
 
+    public void setColor(int newcolor)
+    {
+        color = newcolor;
+    }
+
     public void init()
     {
         p = new Paint();

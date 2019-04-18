@@ -1,13 +1,28 @@
 package com.example.guardianangelsafetyapp;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.ResultReceiver;
 
-public class DataReceiver extends BroadcastReceiver {
+public class DataReceiver extends ResultReceiver {
+    private Receiver mReceiver;
+
+    public DataReceiver(Handler handler) {
+        super(handler);
+    }
+
+    public interface Receiver {
+        public void onReceiveResult(int resultCode, Bundle resultData);
+    }
+
+    public void setReceiver(Receiver receiver) {
+        mReceiver = receiver;
+    }
 
     @Override
-    public void onReceive(Context context, Intent intent){
-        //Pass data through to MainActivity and DataActivity here
+    protected void onReceiveResult(int resultCode, Bundle resultData) {
+        if(mReceiver != null) {
+            mReceiver.onReceiveResult(resultCode, resultData);
+        }
     }
 }

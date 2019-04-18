@@ -2,10 +2,11 @@ package com.example.guardianangelsafetyapp;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.IBinder;
-import android.os.Messenger;
-import android.os.health.SystemHealthManager;
-import android.widget.Toast;
+import android.os.ResultReceiver;
+
+import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -37,7 +38,7 @@ public class DataService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         try {
-            pushData();
+            pushData(intent);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -63,16 +64,27 @@ public class DataService extends IntentService {
     }
 
 
-    public void pushData() throws IOException, InterruptedException {
+    public void pushData(Intent intent) throws IOException, InterruptedException {
         while(true) {
             HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
+            String result = "";
             try {
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                readStream(in);
+                result = readStream(in);
             } finally {
                 urlConnection.disconnect();
             }
-            TimeUnit.SECONDS.sleep(60);
+            ResultReceiver rec = intent.getParcelableExtra("receiverTag");
+            Bundle b = new Bundle();
+            if(result != null) {
+                b.putString("json", result);
+                rec.send(0, b);
+                TimeUnit.SECONDS.sleep(60);
+            }
+            else{
+                b.putString("Failed", "Failed");
+                rec.send(0, b);
+            }
         }
     }
 

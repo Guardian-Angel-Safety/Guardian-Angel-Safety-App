@@ -41,7 +41,7 @@
         android:id="@+id/ui_ring"
         android:layout_width="225dp"
         android:layout_height="225dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:src="@drawable/ui_ring"
         app:layout_constraintBottom_toTopOf="@+id/ui_bluetooth"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +53,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
         android:id="@+id/ui_pres"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toStartOf="@+id/ui_bluetooth"
         app:layout_constraintTop_toBottomOf="@+id/ui_ring"
@@ -75,7 +75,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toEndOf="@+id/ui_bluetooth"
         app:layout_constraintTop_toBottomOf="@+id/ui_ring"
         app:srcCompat="@drawable/batteryfull" />
@@ -122,7 +122,7 @@
         tools:text="contacts" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/SettingsButton"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="100dp"
         android:layout_height="100dp"

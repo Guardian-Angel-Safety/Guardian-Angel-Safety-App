@@ -1,8 +1,6 @@
 package com.example.guardianangelsafetyapp;
 
 import android.app.AlertDialog;
-import android.app.PendingIntent;
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -28,8 +26,8 @@ public class AddEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addedit);
 
-        nameET = (EditText) findViewById(R.id.nameET);
-        numberET = (EditText) findViewById(R.id.numberET);
+        nameET = (EditText) findViewById(R.id.v_model);
+        numberET = (EditText) findViewById(R.id.v_make);
         btnDelete = (Button) findViewById(R.id.btnDelete);
         btnAddEdit = (Button) findViewById(R.id.btnAddEditContact);
 

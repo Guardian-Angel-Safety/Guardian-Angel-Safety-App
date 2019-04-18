@@ -81,7 +81,7 @@ public class DataService extends IntentService {
             if(result != null) {
                 b.putString("json", result);
                 rec.send(0, b);
-                TimeUnit.SECONDS.sleep(60);
+                TimeUnit.SECONDS.sleep(15);
             }
             else{
                 System.out.println("Failed data pull");
@@ -106,4 +106,5 @@ public class DataService extends IntentService {
             return incoming;
         }
     }
+
 }

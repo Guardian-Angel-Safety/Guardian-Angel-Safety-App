@@ -1,7 +1,9 @@
 package com.example.guardianangelsafetyapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
@@ -11,16 +13,25 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class DataActivity extends Activity {
+public class DataActivity extends Activity implements DataReceiver.Receiver {
+    DataReceiver mReceiver;
+    Intent dataService;
+    String pressure;
+    String temperature;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.data_activity);
+        dataService = new Intent(this, DataService.class);
+        initService(dataService);
 
 //        final Button refresh = findViewById(R.id.refresh);
         final GraphView graph1 = DrawGraph("Temperature", 70, 90, R.id.graph1);
@@ -40,24 +51,42 @@ public class DataActivity extends Activity {
         test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setTempText(69);
-                setPresText(69);
             }
         });
     }
 
-    public void setTempText(float temp)
-    {
-        TextView text_temp = findViewById(R.id.text_temp);
-        int newtemp = Math.round(temp);
-        text_temp.setText(Integer.toString(newtemp));
+    public void initService(Intent dataService) {
+        mReceiver = new DataReceiver(new Handler());
+        mReceiver.setReceiver(this);
+        dataService.putExtra("nameTag", "GAS");
+        dataService.putExtra("receiverTag", mReceiver);
+        startService(dataService);
     }
 
-    public void setPresText(float psi)
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        stopService(dataService);
+    }
+
+    @Override
+    public void onReceiveResult(int resultCode, Bundle resultData) throws JSONException {
+        System.out.println("DataActivity received: "+resultData);
+        JSONObject sensorData = new JSONObject(resultData.toString());
+        pressure = sensorData.get("pressure").toString();
+        temperature = sensorData.get("temperature").toString();
+    }
+
+    public void setTempText()
+    {
+        TextView text_temp = findViewById(R.id.text_temp);
+        text_temp.setText(temperature);
+    }
+
+    public void setPresText()
     {
         TextView text_pres = findViewById(R.id.text_pres);
-        int newtemp = Math.round(psi);
-        text_pres.setText(Integer.toString(newtemp));
+        text_pres.setText(pressure);
     }
 
     protected GraphView DrawGraph(String title, int from, int to, int id){

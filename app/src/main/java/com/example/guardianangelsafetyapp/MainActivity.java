@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
   TextView temptext;
   ImageView ring;
   DataReceiver mReceiver;
+  Intent dataService;
 
   ImageView pres_icon;
   ImageView bluetooth_icon;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    Intent dataService = new Intent(this, DataService.class);
+    dataService = new Intent(this, DataService.class);
     initService(dataService);
 
     temptext = findViewById(R.id.ui_temptext);
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
     DataButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
+        stopService(dataService);
         startActivity(new Intent(MainActivity.this, DataActivity.class));
       }
     });
@@ -67,10 +69,15 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
 
   @Override
   public void onReceiveResult(int resultCode, Bundle resultData) throws JSONException {
-    System.out.println(resultData);
+    System.out.println("MainActivity received: "+resultData);
     JSONObject sensorData = new JSONObject(resultData.toString());
     pressure = sensorData.get("pressure").toString();
     temperature = sensorData.get("temperature").toString();
+  }
+
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
   }
 
   public void initService(Intent dataService) {

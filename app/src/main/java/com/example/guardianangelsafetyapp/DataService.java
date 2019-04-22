@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.ResultReceiver;
-import android.provider.SyncStateContract;
 import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -15,9 +17,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -76,15 +75,27 @@ public class DataService extends IntentService {
                 urlConnection.disconnect();
             }
             ResultReceiver rec = intent.getParcelableExtra("receiverTag");
+            /* For testing
+            JSONObject test = new JSONObject();
+            try {
+                test.put("pressure_data", "100");
+                test.put("temperature_data", "100");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            result = test.toString();
+            */
             Log.d("GAS", "received");
             Bundle b = new Bundle();
             if(result != null) {
                 b.putString("json", result);
                 rec.send(0, b);
-                TimeUnit.SECONDS.sleep(15);
+                TimeUnit.SECONDS.sleep(1);
             }
             else{
                 System.out.println("Failed data pull");
+                b.putString("json", "Failed");
+                rec.send(0, b);
             }
         }
     }

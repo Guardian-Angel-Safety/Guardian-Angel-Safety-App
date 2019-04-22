@@ -1,11 +1,8 @@
 package com.example.guardianangelsafetyapp;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import android.support.annotation.RequiresApi;
 
 import org.json.JSONException;
 

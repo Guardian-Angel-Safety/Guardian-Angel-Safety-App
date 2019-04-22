@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
     bluetooth_icon = findViewById(R.id.ui_bluetooth);
     battery_icon = findViewById(R.id.ui_battery);
 
-    final Button DataButton = findViewById(R.id.DataButton);
+    //final Button DataButton = findViewById(R.id.DataButton);
     final Button ContactsButton = findViewById(R.id.ContactsButton);
-    final Button test = findViewById(R.id.test);
 
+    /*
     DataButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
         startActivity(new Intent(MainActivity.this, DataActivity.class));
       }
     });
+    */
 
     ContactsButton.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -58,21 +59,21 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
       }
     });
 
-    test.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        setUI(temperature, pressure,30,false);
-      }
-    });
-
   }
 
   @Override
   public void onReceiveResult(int resultCode, Bundle resultData) throws JSONException {
-    System.out.println("MainActivity received: "+resultData);
-    JSONObject sensorData = new JSONObject(resultData.toString());
-    pressure = sensorData.get("pressure").toString();
-    temperature = sensorData.get("temperature").toString();
+    try {
+      Object unclean = resultData.get("json");
+      JSONObject sensorData = new JSONObject(unclean.toString());
+      System.out.println(sensorData);
+      pressure = sensorData.get("pressure_data").toString();
+      temperature = sensorData.get("temperature_data").toString();
+      setUI(temperature, pressure, 100f, true);
+    } catch (Exception e) {
+      System.out.println("Reached catch");
+      setUI("NaN", "NaN", 0f, false);
+    }
   }
 
   @Override
@@ -91,31 +92,31 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
   public void setTemp(String temp)
   {
     temptext.setText(temp);
-    /*
-    if (temp > 95f)
-    {
-      ring.getDrawable().setTint(getResources().getColor(R.color.red_supporting));
+    try {
+      Float tempF = Float.parseFloat(temp);
+
+      if (tempF > 95f) {
+        ring.getDrawable().setTint(getResources().getColor(R.color.red_supporting));
+      } else if (tempF > 80f) {
+        ring.getDrawable().setTint(getResources().getColor(R.color.yellow_supporting));
+      } else {
+        ring.getDrawable().setTint(getResources().getColor(R.color.green_supporting));
+      }
+    } catch (Exception e) {
+
     }
-    else if (temp > 80f)
-    {
-      ring.getDrawable().setTint(getResources().getColor(R.color.yellow_supporting));
-    }
-    else {
-      ring.getDrawable().setTint(getResources().getColor(R.color.green_supporting));
-    }
-    */
-    Log.d("myTag", "This is my message");
   }
 
   public void setPres(String pres)
   {
-    Float newPres = Float.parseFloat(pres);
-    if (newPres > 5f)
-    {
-      pres_icon.setImageResource(R.drawable.seatfull);
-    }
-    else
-    {
+    try {
+      Float newPres = Float.parseFloat(pres);
+      if (newPres > 5f) {
+        pres_icon.setImageResource(R.drawable.seatfull);
+      } else {
+        pres_icon.setImageResource(R.drawable.seatempty);
+      }
+    } catch (Exception e) {
       pres_icon.setImageResource(R.drawable.seatempty);
     }
   }

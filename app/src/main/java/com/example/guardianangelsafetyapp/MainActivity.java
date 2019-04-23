@@ -13,6 +13,10 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.widget.Toast;
+
 public class MainActivity extends AppCompatActivity implements DataReceiver.Receiver {
 
   String temperature;
@@ -25,6 +29,10 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
   ImageView pres_icon;
   ImageView bluetooth_icon;
   ImageView battery_icon;
+
+  private int lastTemperature = 0;
+  private int lastPressure = 0;
+  private boolean timerEnabled = false;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -39,18 +47,15 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
     bluetooth_icon = findViewById(R.id.ui_bluetooth);
     battery_icon = findViewById(R.id.ui_battery);
 
-    //final Button DataButton = findViewById(R.id.DataButton);
+    // final Button DataButton = findViewById(R.id.DataButton);
     final Button ContactsButton = findViewById(R.id.ContactsButton);
 
     /*
-    DataButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        stopService(dataService);
-        startActivity(new Intent(MainActivity.this, DataActivity.class));
-      }
-    });
-    */
+     * DataButton.setOnClickListener(new View.OnClickListener() {
+     * 
+     * @Override public void onClick(View v) { stopService(dataService);
+     * startActivity(new Intent(MainActivity.this, DataActivity.class)); } });
+     */
 
     ContactsButton.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -65,15 +70,47 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
   public void onReceiveResult(int resultCode, Bundle resultData) throws JSONException {
     try {
       Object unclean = resultData.get("json");
+      if (unclean.toString().compareToIgnoreCase("failed") == 0) {
+        throw new Exception();
+      }
+      if(timerEnabled)
+      {
+        timerEnabled = false;
+        cancelTimer();
+      }
       JSONObject sensorData = new JSONObject(unclean.toString());
       System.out.println(sensorData);
-      pressure = sensorData.get("pressure_data").toString();
-      temperature = sensorData.get("temperature_data").toString();
+      lastPressure = sensorData.getInt("pressure_data");
+      lastTemperature = sensorData.getInt("temperature_data");
+      pressure = Integer.toString(lastPressure);
+      temperature = Integer.toString(lastTemperature);
       setUI(temperature, pressure, 100f, true);
     } catch (Exception e) {
       System.out.println("Reached catch");
+      if(!timerEnabled && lastTemperature > 90)
+      {
+        startTimer();
+        timerEnabled = true;
+      }
       setUI("NaN", "NaN", 0f, false);
     }
+  }
+
+  public void startTimer() {
+    int i = 15;
+    Intent intent = new Intent(this, AlarmReceiver.class);
+    PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), 0, intent, 0);
+    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+    alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (5000), pendingIntent);
+    Toast.makeText(this, "Timer set", Toast.LENGTH_LONG).show();
+  }
+
+  public void cancelTimer() {
+    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+    Intent intent = new Intent(this, AlarmReceiver.class);
+    PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), 0, intent, 0);
+    alarmManager.cancel(pendingIntent);
+    Toast.makeText(this, "Timer cancelled", Toast.LENGTH_LONG).show();
   }
 
   @Override
@@ -89,8 +126,7 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
     startService(dataService);
   }
 
-  public void setTemp(String temp)
-  {
+  public void setTemp(String temp) {
     temptext.setText(temp);
     try {
       Float tempF = Float.parseFloat(temp);
@@ -107,8 +143,7 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
     }
   }
 
-  public void setPres(String pres)
-  {
+  public void setPres(String pres) {
     try {
       Float newPres = Float.parseFloat(pres);
       if (newPres > 5f) {
@@ -121,36 +156,25 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
     }
   }
 
-  public void setBluetooth(boolean on)
-  {
-    if (on)
-    {
+  public void setBluetooth(boolean on) {
+    if (on) {
       bluetooth_icon.setImageResource(R.drawable.bluetoothconnected);
-    }
-    else
-    {
+    } else {
       bluetooth_icon.setImageResource(R.drawable.bluetoothdisabled);
     }
   }
 
-  public void setBattery(float level)
-  {
-    if (level > 60f)
-    {
+  public void setBattery(float level) {
+    if (level > 60f) {
       battery_icon.setImageResource(R.drawable.batteryfull);
-    }
-    else if (level > 25f)
-    {
+    } else if (level > 25f) {
       battery_icon.setImageResource(R.drawable.batteryhalf);
-    }
-    else
-    {
+    } else {
       battery_icon.setImageResource(R.drawable.batterylow);
     }
   }
 
-  public void setUI(String temp, String pres, float battery, boolean bluetooth)
-  {
+  public void setUI(String temp, String pres, float battery, boolean bluetooth) {
     setTemp(temp);
     setPres(pres);
     setBattery(battery);

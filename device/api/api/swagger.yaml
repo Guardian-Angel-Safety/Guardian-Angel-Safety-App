@@ -1,0 +1,55 @@
+---
+swagger: "2.0"
+info:
+  description: "An API to cover our asses"
+  version: "1.0.0"
+  title: "Guardian Angel Safety API"
+schemes:
+- "https"
+paths:
+  /:
+    get:
+      description: "Returns GAS Status Data"
+      operationId: "rootGET"
+      parameters: []
+      responses:
+        200:
+          description: "Successfully returned a list of artists"
+          schema:
+            $ref: "#/definitions/GASResponseData"  
+        400:
+          description: "Invalid request"
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+    post:
+        summary: Sets demo state.
+        consumes:
+            - application/json
+        parameters:
+            - in: body
+              name: message
+              description: Control GASControlMessage
+              schema:
+                $ref: '#/definitions/GASControlMessage'
+        responses:
+            200:
+                description: OK
+    x-swagger-router-controller: "Default"
+definitions:
+  GASControlMessage :
+    type: object
+    properties:
+      demo_state:
+        type: integer
+  GASResponseData :
+    type: object
+    properties:
+      temperature_data:
+        type: integer
+      pressure_data:
+          type: integer
+      battery_level:
+          type: integer

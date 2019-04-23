@@ -71,6 +71,11 @@ public class DataService extends IntentService {
             try {
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                 result = readStream(in);
+            } catch(Exception e) {
+                ResultReceiver rec = intent.getParcelableExtra("receiverTag");
+                Bundle b = new Bundle();
+                b.putString("json", "Failed");
+                rec.send(0, b);
             } finally {
                 urlConnection.disconnect();
             }

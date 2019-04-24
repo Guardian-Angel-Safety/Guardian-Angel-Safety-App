@@ -25,11 +25,12 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
   ImageView ring;
   DataReceiver mReceiver;
   Intent dataService;
-
+  
   ImageView pres_icon;
   ImageView bluetooth_icon;
   ImageView battery_icon;
-
+  float batteryLevel;
+  
   private int lastTemperature = 0;
   private int lastPressure = 0;
   private boolean timerEnabled = false;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
 
     // final Button DataButton = findViewById(R.id.DataButton);
     final Button ContactsButton = findViewById(R.id.ContactsButton);
+    final Button SettingsButton = findViewById(R.id.SettingsButton);
 
     /*
      * DataButton.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +63,13 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
       @Override
       public void onClick(View v) {
         startActivity(new Intent(MainActivity.this, ContactsActivity.class));
+      }
+    });
+
+    SettingsButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startActivity(new Intent(MainActivity.this, CarsActivity.class));
       }
     });
 
@@ -84,7 +93,8 @@ public class MainActivity extends AppCompatActivity implements DataReceiver.Rece
       lastTemperature = sensorData.getInt("temperature_data");
       pressure = Integer.toString(lastPressure);
       temperature = Integer.toString(lastTemperature);
-      setUI(temperature, pressure, 100f, true);
+      batteryLevel = (float)sensorData.getInt("battery_level");
+      setUI(temperature, pressure, batteryLevel, true);
     } catch (Exception e) {
       System.out.println("Reached catch");
       if(!timerEnabled && lastTemperature > 90)

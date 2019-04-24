@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <title>Guardian Angel Safety Nonsense</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.0.slim.js"
+              integrity="sha256-milezx5lakrZu0OP9b2QWFy1ft/UEUK6NH1Jqz8hUhQ="
+			  crossorigin="anonymous"></script>
+    <script src="demostates.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+        module.exports = DEMOSTATE = {<br>
+        DEMO_IDLE: 0,<br>
+        DEMO_TEMPRAISE: 1,<br>
+        DEMO_TEMPRISING: 2,<br>
+        DEMO_TEMPHOT: 3,<br>
+        DEMO_LOWBATTERY: 4,<br>
+        DEMO_DISCONNECT: 5,<br>
+        DEMO_RECONCILE: 6,<br>
+        DEMO_FINISH: 7<br>
+    };<br>
+    Demostate:<input type="text" id="demostatetb"><br><br>
+    <input type="button" onclick="readTextBox()" value="Submit">
+    <script>
+        function readTextBox() 
+        {
+            var demostate = $('#demostatetb').val();
+            setDemoState(demostate);
+        }
+    </script>
+</body>
+</html>

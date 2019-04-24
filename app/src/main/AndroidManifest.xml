@@ -17,6 +17,9 @@
             android:name=".SettingsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".CarsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
